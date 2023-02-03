@@ -16,10 +16,30 @@
 			const config = {
 				width: 960,
 				height: 540
+				scene:{
+					preload: precarga,
+					create: crear,
+					update: actualiza
+				}
 			}
-		
+			
 			const game = new Phaser.Game(config);
 		
+			function precarga()
+			{
+				this.load.image("player-img", "player.png");
+			}
+			
+			function crear()
+			{
+				player = this.add.image(64, 64, "player-img");
+			}
+			
+			function actualiza()
+			{
+			
+			}
+			
 		</script>
 	</body>
 </html>
