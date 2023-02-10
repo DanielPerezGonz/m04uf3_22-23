@@ -4,7 +4,7 @@ const http = require("http");
 const fs = require("fs");
 
 function send_index(response){
-	fs.readDile("index.html", function(err, data){
+	fs.readFile("index.html", function(err, data){
 		if (err){
 			console.error(err);
 			return;
@@ -18,7 +18,7 @@ function send_index(response){
 }
 
 function send_player(response){
-	fs.readDile("player.png", function(err, data){
+	fs.readFile("player.png", function(err, data){
 		if (err){
 			console.error(err);
 			return;

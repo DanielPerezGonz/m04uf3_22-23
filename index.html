@@ -15,7 +15,13 @@
 		
 			const config = {
 				width: 960,
-				height: 540
+				height: 540,
+				physics:{
+					default:'arcade',
+					arcade:{
+						debug: true
+					}
+				},
 				scene:{
 					preload: precarga,
 					create: crear,
@@ -26,7 +32,8 @@
 			const game = new Phaser.Game(config);
 			
 			let player;
-			let player_speed =2;
+			let player_speed = 2;
+			let enemy_padding = 128;
 			let enemies = [];
 			let enemies_pos = [
 				{x: enemy_padding, y: enemy_padding},
@@ -56,8 +63,13 @@
 			function crear(){
 				player = this.add.image(config.width/2,config.height/2,"player-img");
 
+				this.physics.add.existing(player, false);
+				player.body.setCollideWorldBounds(true);
+
 				for(let i =0; i < enemies_pos.length; i++){
-					this.add.image(enemies_pos[i].x, enemies_[i].y, "player-img");
+					enemies[i].push(this.add.image(enemies_pos[i].x, enemies_[i].y, "player-img"));
+					this.physics.add.existing(enemies[i], false);
+					enemies[i].body.setCollideWorldBounds(true);
 				}
 
 
@@ -70,6 +82,15 @@
 			
 			function actualiza()
 			{
+				
+				for (let i =0; i < enemies.length; i++){
+					this.physics.moveToObject(enemies[i], player, 50);
+				}
+
+				for (let i = 0; i < enemies.length; i++){
+					this.physics.arcade.collide(player, enemies[i]);
+				}
+
 				if (key_left.isDOWN){
 					player.x -= player_speed;
 				}
