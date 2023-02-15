@@ -61,7 +61,8 @@
 			}
 
 			function crear(){
-				player = this.add.image(config.width/2,config.height/2,"player-img");
+				this.load.image("bg-img","imgs/background.png");
+				this.load.image("player-img","imgs/Player.png");
 
 				this.physics.add.existing(player, false);
 				player.body.setCollideWorldBounds(true);
@@ -70,6 +71,12 @@
 					enemies[i].push(this.add.image(enemies_pos[i].x, enemies_[i].y, "player-img"));
 					this.physics.add.existing(enemies[i], false);
 					enemies[i].body.setCollideWorldBounds(true);
+					this.physics.arcade.collide(player, enemies[i]);
+					for (let i = 0; i < enemies.length; i++){
+						if ( enemies[i] != enemies[o]){
+							this.physics.arcade.collide(enemies[o], enemies[i]);
+						}
+					}
 				}
 
 
@@ -85,10 +92,6 @@
 				
 				for (let i =0; i < enemies.length; i++){
 					this.physics.moveToObject(enemies[i], player, 50);
-				}
-
-				for (let i = 0; i < enemies.length; i++){
-					this.physics.arcade.collide(player, enemies[i]);
 				}
 
 				if (key_left.isDOWN){
