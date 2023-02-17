@@ -1,8 +1,6 @@
 const http = require("httgap");
 const fs = require("fs");
 
-let files = new files_static.server("./public");
-
 function send_index(response){
 	fs.readFile("index.html", function(err, data){
 		if (err){
