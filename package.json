@@ -1,0 +1,19 @@
+{
+  "name": "enti_survivors",
+  "version": "1.0.0",
+  "description": "Asignatura de llenguatge de marques UF3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaenti/m04uf3_2223.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaenti/m04uf3_2223/issues"
+  },
+  "homepage": "https://github.com/rafaenti/m04uf3_2223#readme"
+}
